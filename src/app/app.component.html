@@ -1,0 +1,38 @@
+
+
+
+
+<div class="container flex justify-center mt-10">
+  <form #form="ngForm" (ngSubmit)="form.valid && onsubmit()" class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+    <!-- Name Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+      <input type="text" class="form-control w-full border border-gray-300 rounded px-3 py-2" name="Name" required #Name="ngModel" [(ngModel)]="data.Name" pattern="[A-Za-z]{1,32}">
+      <div *ngIf="form.submitted && Name.errors?.['required']" class="text-red-500 text-xs mt-1">Name is required</div>
+      <div *ngIf="form.submitted && Name.errors?.['pattern']" class="text-red-500 text-xs mt-1">Name Cannot Contain Space</div>
+    
+    </div>
+    
+    <!-- UserName Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">UserName</label>
+      <input type="text" class="form-control w-full border border-gray-300 rounded px-3 py-2" name="userName" required #userName="ngModel" [(ngModel)]="data.userName">
+      <div *ngIf="form.submitted && userName.errors?.['required']" class="text-red-500 text-xs mt-1">UserName is required</div>
+      <div *ngIf="form.submitted && Name.errors?.['pattern']" class="text-red-500 text-xs mt-1">UserName Cannot Contain Space</div>
+    </div>
+    
+    <!-- Email Field -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+      <input type="email" class="form-control w-full border border-gray-300 rounded px-3 py-2" name="email" required #email="ngModel" [(ngModel)]="data.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <div *ngIf="form.submitted && email.errors?.['required']" class="text-red-500 text-xs mt-1">Email is required</div>
+      <div *ngIf="form.submitted && email.errors?.['pattern']" class="text-red-500 text-xs mt-1">Invalid email</div>
+    </div>
+    
+    <!-- Submit Button -->
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+    </div>
+  </form>
+</div>
+
